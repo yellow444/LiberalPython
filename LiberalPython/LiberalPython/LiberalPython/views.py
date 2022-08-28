@@ -55,7 +55,10 @@ def upload():
         #msg = f.filename
         usrInput = DoWork(getText(os.path.join(app.config['UPLOAD_FOLDER'],filename)))
         usrOutput =   list(set(columns) - set(list(OrderedDict.fromkeys(usrInput))) ) 
-        return jsonify(usrInput=usrInput,usrOutput=usrOutput)
+        color = 'white'
+        if len(set(list(OrderedDict.fromkeys(usrInput)))) <10:
+            color = 'red'
+        return jsonify(usrInput=usrInput,usrOutput=usrOutput,color = color)
     return render_template('upload.html',year = datetime.utcnow().year)
   
 def getText(filename):

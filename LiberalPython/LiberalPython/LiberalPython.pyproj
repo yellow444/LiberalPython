@@ -17,6 +17,7 @@
     <SuppressCollectPythonCloudServiceFiles>true</SuppressCollectPythonCloudServiceFiles>
     <Name>LiberalPython</Name>
     <RootNamespace>LiberalPython</RootNamespace>
+    <WebBrowserPort>5000</WebBrowserPort>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
     <DebugSymbols>true</DebugSymbols>
@@ -57,6 +58,9 @@
     <Content Include="LiberalPython\static\images\twitter_header_photo_2.png" />
     <Content Include="LiberalPython\static\images\twitter_profile_image.png" />
     <Content Include="LiberalPython\static\images\youtube_profile_image.png" />
+    <Content Include="LiberalPython\static\scripts\upload.js" />
+    <Content Include="LiberalPython\templates\favicon.png" />
+    <Content Include="LiberalPython\templates\upload.html" />
     <Content Include="requirements.txt" />
     <Content Include="LiberalPython\static\content\bootstrap.css" />
     <Content Include="LiberalPython\static\content\bootstrap.min.css" />
@@ -80,10 +84,6 @@
     <Content Include="LiberalPython\static\scripts\respond.js" />
     <Content Include="LiberalPython\static\scripts\respond.min.js" />
     <Content Include="LiberalPython\static\scripts\_references.js" />
-    <Content Include="LiberalPython\templates\about.html" />
-    <Content Include="LiberalPython\templates\contact.html" />
-    <Content Include="LiberalPython\templates\index.html" />
-    <Content Include="LiberalPython\templates\layout.html" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.Web.targets" />
   <!-- Specify pre- and post-build commands in the BeforeBuild and 

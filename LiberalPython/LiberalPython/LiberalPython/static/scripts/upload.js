@@ -22,6 +22,8 @@ $(document).ready(function () {
                 usrInput.textContent = data.usrInput
                 var usrOutput = document.getElementById('usrOutput');
                 usrOutput.textContent = data.usrOutput
+                var textarea = document.getElementById("usrInput");
+                textarea.style.backgroundColor = data.color;
             },
         });
     });
