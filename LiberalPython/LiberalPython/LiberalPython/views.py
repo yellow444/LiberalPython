@@ -4,13 +4,14 @@ Routes and views for the flask application.
 import docx
 from datetime import datetime
 from flask import render_template,request,jsonify,send_from_directory   
-from FlaskWebProject2 import app
+from LiberalPython import app
 from werkzeug.utils import secure_filename
 import os.path
 from os import path
 import os  
 from simpletransformers.classification import ClassificationModel
 from sklearn.model_selection import train_test_split
+from collections import OrderedDict
 
 
 
@@ -26,13 +27,15 @@ from sklearn.model_selection import train_test_split
 #    use_cuda=False,cache_dir=os.path.join(app.config['CONTENT_FOLDER'] ,'/outputs/checkpoint-32070-epoch-15')
 #)
 
+columns = list([i for i in range(1,40)])
+
 train_args ={"reprocess_input_data": True,
              "fp16":False,
              "num_train_epochs": 15}
 
 
 model = ClassificationModel(
-    "bert", "/content/outputs/checkpoint-32070-epoch-15",
+    'bert', 'C:\\Users\\yello\\source\\repos\\yellow444\\LiberalPython\\LiberalPython\\LiberalPython\\LiberalPython\\content\\outputs\\checkpoint-32070-epoch-15\\',
     num_labels=39,
     args=train_args,
     use_cuda=False
@@ -50,9 +53,9 @@ def upload():
         print(filename)
         f.save(os.path.join(app.config['UPLOAD_FOLDER'],filename))
         #msg = f.filename
-        usrInput = getText(os.path.join(app.config['UPLOAD_FOLDER'],filename))
-        usrOutput = DoWork(usrInput)
-        return jsonify(usrInput=usrInput[101:110],usrOutput=usrOutput)
+        usrInput = DoWork(getText(os.path.join(app.config['UPLOAD_FOLDER'],filename)))
+        usrOutput =   list(set(columns) - set(list(OrderedDict.fromkeys(usrInput))) ) 
+        return jsonify(usrInput=usrInput,usrOutput=usrOutput)
     return render_template('upload.html',year = datetime.utcnow().year)
   
 def getText(filename):
@@ -64,5 +67,5 @@ def getText(filename):
 
 
 def DoWork (text):
-    predictions, raw_outputs = model.predict(text[101:110])
+    predictions, raw_outputs = model.predict(text[150:170])
     return predictions

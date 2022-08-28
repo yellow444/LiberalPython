@@ -9,4 +9,4 @@ UPLOAD_FOLDER = './uploads'
 CONTENT_FOLDER = './content'
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 app.config['CONTENT_FOLDER'] = CONTENT_FOLDER
-import FlaskWebProject2.views
+import LiberalPython.views
