@@ -1,7 +1,7 @@
 version: '3'
 services:
   flask:
-    build: ./FlaskWebProject2
+    build: ./LiberalPython
     container_name: app-flask
     environment:
       - FLASK_ENV=development
