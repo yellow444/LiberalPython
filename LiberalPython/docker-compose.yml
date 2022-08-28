@@ -1,0 +1,15 @@
+version: '3'
+services:
+  flask:
+    build: ./FlaskWebProject2
+    container_name: app-flask
+    environment:
+      - FLASK_ENV=development
+      - PYTHONUNBUFFERED=True    
+    restart: on-failure
+    volumes:
+      - ./data:/backend
+      - ./FlaskWebProject2/FlaskWebProject2/content/outputs/checkpoint-32070-epoch-15:/content/outputs/checkpoint-32070-epoch-15
+    ports:
+      - "80:5000"
+    command: python runserver.py
